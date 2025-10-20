@@ -3,25 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Turn Your Passion Into Real Change | charity: water</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            color: #000000;
+            line-height: 1.6;
+            background-color: #fff7e2;
+        }
+        /* Header */
+        header {
+            background: #000000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            height: 50px;
+            width: auto;
+            background: #fff7e2;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #fff7e2;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #FFC907;
+        }
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            position: relative;
+            height: 600px;
+            background: url('img/5820_Ethiopia_2019_CG-.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff7e2;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+        .hero-subheadline {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .cta-button {
+            display: inline-block;
+            background: #FFC907;
+            color: #000000;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(255, 201, 7, 0.4);
+        }
+        .cta-button:hover {
+            background: #FFD54F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 201, 7, 0.6);
+        }
+        /* Story Section */
+        .story {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .story h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #79a7ba;
+        }
+        .story p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        /* Real-World Impact Story */
+        .impact-story {
+            background: #000000;
+            padding: 80px 20px;
+        }
+        .impact-story h2 {
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #79a7ba;
+        }
+        .impact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .impact-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(121, 167, 186, 0.3);
+        }
+        .impact-content p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #fff7e2;
+        }
+        /* Impact Stats */
+        .stats {
+            background: #fff7e2;
+            padding: 80px 20px;
+        }
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .stat-item {
+            background: #000000;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #79a7ba;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 18px;
+            color: #fff7e2;
+            font-weight: 600;
+        }
+        /* How It Works */
+        .how-it-works {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .how-it-works h2 {
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #79a7ba;
+        }
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .step {
+            text-align: center;
+            padding: 30px;
+            flex: 0 1 280px;
+        }
+        .step-top {
+            align-self: flex-start;
+        }
+        .step-bottom {
+            align-self: flex-start;
+            margin-top: 60px;
+            flex-basis: 100%;
+            max-width: 400px;
+        }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: #FFC907;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            font-weight: 800;
+            color: #000000;
+        }
+        .step h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+        .step p {
+            font-size: 16px;
+            color: #000000;
+            line-height: 1.6;
+        }
+        /* Testimonial */
+        .testimonial {
+            background: #79a7ba;
+            padding: 80px 20px;
+            color: #fff7e2;
+            text-align: center;
+        }
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .testimonial-quote {
+            font-size: 28px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .testimonial-author {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        /* Call to Action Section */
+        .call-to-action {
+            background: #000000;
+            padding: 80px 20px;
+            text-align: center;
+            color: #fff7e2;
+        }
+        .call-to-action h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .call-to-action p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .donate-button {
+            display: inline-block;
+            background: #FFC907;
+            color: #000000;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(255, 201, 7, 0.4);
+        }
+        .donate-button:hover {
+            background: #FFD54F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 201, 7, 0.6);
+        }
+        /* Footer */
+        footer {
+            background: #000000;
+            color: #fff7e2;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            color: #fff7e2;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #FFC907;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero-subheadline {
+                font-size: 18px;
+            }
+            .impact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .story h2,
+            .impact-story h2,
+            .call-to-action h2,
+            .how-it-works h2 {
+                font-size: 32px;
+            }
+            .step-bottom {
+                margin-top: 0;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img src="img/cw_logo-2.png" alt="charity: water logo" class="logo">
+            <nav>
+                <a href="#mission">Mission</a>
+                <a href="#impact">Impact</a>
+                <a href="#get-started">Get Started</a>
+            </nav>
+        </div>
+    </header>
     <!-- Hero Section: This is the main banner at the top of the page -->
     <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
+        <div class="hero-content">
+            <!-- Main headline -->
+            <h1>Turn Your Passion Into Real, Measurable Change with Every Drop</h1>
+            <!-- Subheadline -->
+            <p class="hero-subheadline">Join us in bringing safe, clean water to communities in need.</p>
+            <a href="#get-started" class="cta-button">Are you Ready</a>
+        </div>
     </section>
-
     <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
+    <section class="story" id="mission">
         <h2>Our Story</h2>
         <p>
-         
+            Charity: water was founded in 2006 with a simple mission: bring clean and safe drinking water to every person on the planet. We started when our founder, Scott Harrison, learned that 1 billion people lacked access to clean water. Today, we're a global movement of students, donors, and partners creating transparent, data-driven solutions that bring clean, safe water to communities in need.
+        </p>
+        <p>
+            Every contribution is tracked. Every drop is measured. Every life is changed. Be part of something bigger than yourself and watch your impact grow in real-time. With 100% of public donations going directly to water projects, we've helped bring clean water to over 16 million people across 29 countries.
+        </p>
     </section>
-
     <!-- Real-World Impact Story Section -->
     <section class="impact-story">
         <!-- Section headline -->
@@ -29,19 +397,81 @@
         <!-- Container for image and text -->
         <div class="impact-content">
             <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
+            <img src="img/5744_Ethiopia_2019_CG-.jpg" alt="Amina smiling with clean water" class="impact-image">
             <!-- Impact story text -->
             <p>
                 Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
             </p>
         </div>
     </section>
-
+    <!-- Impact Stats -->
+    <section class="stats" id="impact">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">785M</div>
+                <div class="stat-label">People lack clean water</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Transparency guaranteed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">16M+</div>
+                <div class="stat-label">People served worldwide</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$1</div>
+                <div class="stat-label">Can provide clean water</div>
+            </div>
+        </div>
+    </section>
+    <!-- How It Works -->
+    <section class="how-it-works" id="get-started">
+        <h2>How Your Journey Creates Impact</h2>
+        <div class="steps">
+            <div class="step step-top">
+                <div class="step-icon">1</div>
+                <h3>Learn & Explore</h3>
+                <p>Discover the global water crisis and understand how data-driven solutions create lasting change in communities.</p>
+            </div>
+            <div class="step step-top">
+                <div class="step-icon">2</div>
+                <h3>Take Action</h3>
+                <p>Join student campaigns, start fundraisers, or volunteer your skills to support water projects around the world.</p>
+            </div>
+            <div class="step step-bottom">
+                <div class="step-icon">3</div>
+                <h3>Track Your Impact</h3>
+                <p>Watch in real-time as your efforts bring clean water to families. See GPS coordinates, photos, and data from every project.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <div class="testimonial-quote">
+                "Being part of this movement showed me that students can make real, measurable change. Seeing the exact location and impact of our project was incredible."
+            </div>
+            <div class="testimonial-author">— Sarah M., Student Leader</div>
+        </div>
+    </section>
     <!-- Call-to-Action Section: This encourages visitors to take action -->
     <section class="call-to-action">
         <h2>Make a Difference</h2>
         <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
         <a href="#" class="donate-button">Donate Now</a>
     </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+            <p>&copy; 2025 charity: water. 100% of public donations go directly to clean water projects.</p>
+        </div>
+    </footer>
 </body>
 </html>
